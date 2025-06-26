@@ -1,0 +1,175 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "img": "/src/assets/alat/Tenda.png",
+      "name": "Tenda Dome 2 Orang",
+      "price": 40000,
+      "availability": true,
+      "aosDelay": 100,
+      "category": "Tenda"
+    },
+    {
+      "id": 2,
+      "img": "/src/assets/alat/Careel.png",
+      "name": "Carrier 50L",
+      "price": 45000,
+      "availability": true,
+      "aosDelay": 200,
+      "category": "Tas"
+    },
+    {
+      "id": 3,
+      "img": "/src/assets/alat/sleeping bag.png",
+      "name": "Sleeping Bag",
+      "price": 30000,
+      "availability": false,
+      "aosDelay": 300,
+      "category": "Tidur"
+    },
+    {
+      "id": 4,
+      "img": "/src/assets/alat/Matras.png",
+      "name": "Matras",
+      "price": 20000,
+      "availability": true,
+      "aosDelay": 400,
+      "category": "Tidur"
+    },
+    {
+      "id": 5,
+      "img": "/src/assets/alat/sepatu.png",
+      "name": "Sepatu",
+      "price": 25000,
+      "availability": true,
+      "aosDelay": 400,
+      "category": "Alas Kaki"
+    },
+    {
+      "id": 6,
+      "img": "/src/assets/alat/Kompor.png",
+      "name": "Kompor Portable",
+      "price": 15000,
+      "availability": true,
+      "aosDelay": 500,
+      "category": "Dapur"
+    },
+    {
+      "id": 7,
+      "img": "/src/assets/alat/headlamp.png",
+      "name": "Headlamp",
+      "price": 10000,
+      "availability": true,
+      "aosDelay": 600,
+      "category": "Lampu"
+    },
+    {
+      "id": 8,
+      "img": "/src/assets/alat/backpack.png",
+      "name": "Backpack 30L",
+      "price": 35000,
+      "availability": true,
+      "aosDelay": 700,
+      "category": "Tas"
+    },
+    {
+      "id": 9,
+      "img": "/src/assets/alat/topi.png",
+      "name": "Topi Gunung",
+      "price": 10000,
+      "availability": true,
+      "aosDelay": 700,
+      "category": "Pakaian"
+    },
+    {
+      "id": 10,
+      "img": "/src/assets/alat/kacamata1.png",
+      "name": "Kacamata Gunung Model 1",
+      "price": 5000,
+      "availability": true,
+      "aosDelay": 700,
+      "category": "Pakaian"
+    },
+    {
+      "id": 11,
+      "img": "/src/assets/alat/kacamata2.png",
+      "name": "Kacamata Gunung Model 2",
+      "price": 5000,
+      "availability": true,
+      "aosDelay": 700,
+      "category": "Pakaian"
+    },
+    {
+      "id": 12,
+      "img": "/src/assets/alat/trekking pole.png",
+      "name": "Trekking Pole",
+      "price": 20000,
+      "availability": true,
+      "aosDelay": 700,
+      "category": "Alas Kaki"
+    },
+    {
+      "id": 13,
+      "img": "/src/assets/alat/jaket1.png",
+      "name": "Jaket Gunung Model 1",
+      "price": 30000,
+      "availability": true,
+      "aosDelay": 700,
+      "category": "Pakaian"
+    },
+    {
+      "id": 14,
+      "img": "/src/assets/alat/jaket2.png",
+      "name": "Jaket Gunung Model 2",
+      "price": 30000,
+      "availability": true,
+      "aosDelay": 700,
+      "category": "Pakaian"
+    },
+    {
+      "id": 15,
+      "img": "/src/assets/alat/jaket3.png",
+      "name": "Jaket Gunung Model 3",
+      "price": 30000,
+      "availability": true,
+      "aosDelay": 700,
+      "category": "Pakaian"
+    },
+    {
+      "id": 16,
+      "img": "/src/assets/paket/paket.png",
+      "name": "Paket 1",
+      "price": 150000,
+      "availability": true,
+      "aosDelay": 800,
+      "category": "Paket"
+    },
+    {
+      "id": 17,
+      "img": "/src/assets/paket/paket.png",
+      "name": "Paket 2",
+      "price": 200000,
+      "availability": true,
+      "aosDelay": 900,
+      "category": "Paket"
+    },
+    {
+      "id": 18,
+      "img": "/src/assets/paket/paket.png",
+      "name": "Paket 3",
+      "price": 250000,
+      "availability": false,
+      "aosDelay": 1000,
+      "category": "Paket"
+    },
+    {
+      "id": 19,
+      "img": "/src/assets/paket/paket.png",
+      "name": "Paket 4",
+      "price": 270000,
+      "availability": true,
+      "aosDelay": 1100,
+      "category": "Paket"
+    }
+  ]
+}
