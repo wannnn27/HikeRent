@@ -6,71 +6,74 @@ const Hero = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden bg-[#000000]">
-      {/* Background Image with Dark Overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-[1.02]"
-        style={{
-          backgroundImage: `url(${Image1})`,
-        }}
-      />
-      
-      {/* Premium Dark Gradient Overlay matching Login page vignette */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/85 to-transparent" />
-      <div className="absolute top-0 left-0 right-0 h-[40vh] bg-gradient-to-b from-[#000000]/80 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#ffffff] to-transparent" />
+    <div className="relative min-h-screen flex items-center overflow-hidden bg-neutral-50">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${Image1})`,
+          }}
+        />
+        {/* Gradient overlays for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/40" />
+      </div>
 
       {/* Content Container */}
-      <div className="container relative z-10 px-[clamp(24px,6vw,96px)] mx-auto pt-[140px] pb-24 flex-grow flex flex-col justify-center">
-        <div
-          className="max-w-3xl"
-          data-aos="fade-up"
-          data-aos-duration="1200"
-        >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.95] tracking-tight mb-6" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-            PUNCAK <br />
-            <span style={{ color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.7)" }}>PETUALANGAN</span> <br />
-            <span className="text-primary italic font-serif leading-none" style={{ fontFamily: "'DM Serif Display', serif", fontSize: "0.55em", verticalAlign: "baseline", letterSpacing: "normal" }}>
-              Mulai dari Sini.
+      <div className="section-container relative z-10 py-32">
+        <div className="max-w-2xl" data-aos="fade-up" data-aos-duration="800">
+          {/* Overline */}
+          <div className="mb-6">
+            <span className="inline-block text-xs font-semibold text-accent-DEFAULT uppercase tracking-widest border-l-2 border-accent-DEFAULT pl-3">
+              Adventure Awaits
             </span>
+          </div>
+
+          {/* Heading */}
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 leading-tight mb-6 tracking-tight">
+            Experience the
+            <br />
+            <span className="text-accent-DEFAULT">Mountains</span> Your Way
           </h1>
 
-          <p className="text-base md:text-lg lg:text-xl text-gray-400 mb-10 max-w-xl leading-relaxed font-light">
-            Sewa perlengkapan kemping dan pendakian berkualitas tinggi dari brand dunia. 
-            Petualangan luar biasa dimulai dengan persiapan yang sempurna.
+          {/* Subheading */}
+          <p className="text-lg md:text-xl text-neutral-600 mb-8 max-w-xl leading-relaxed font-light">
+            Rent premium camping and hiking gear from world-class brands. Your perfect adventure starts with the right equipment.
           </p>
 
-          <div className="flex flex-wrap gap-4 md:gap-6 items-center">
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-4 items-center">
+            <button
+              onClick={() => navigate("/all-products")}
+              className="px-8 py-3 bg-accent-DEFAULT text-white rounded-lg font-semibold text-sm hover:bg-accent-dark transition-colors duration-200 shadow-md hover:shadow-lg"
+            >
+              Explore Gear
+            </button>
             <button
               onClick={() => {
                 const element = document.getElementById("products");
                 element?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="bg-primary text-[#111] px-8 py-3.5 text-[12px] md:text-[13px] tracking-[0.15em] uppercase font-bold rounded-lg hover:bg-primary-light hover:scale-[1.02] active:scale-95 shadow-xl shadow-primary/20 transition-all duration-300"
+              className="px-8 py-3 bg-white text-neutral-900 rounded-lg font-semibold text-sm border-2 border-neutral-300 hover:border-accent-DEFAULT hover:text-accent-DEFAULT transition-colors duration-200"
             >
-              Lihat Katalog
-            </button>
-            <button
-              onClick={() => navigate("/all-products")}
-              className="bg-transparent text-white px-8 py-3.5 text-[12px] md:text-[13px] tracking-[0.15em] uppercase font-bold rounded-lg border border-white/30 hover:bg-white/10 hover:border-white active:scale-95 transition-all duration-300"
-            >
-              Sewa Sekarang
+              View Popular
             </button>
           </div>
 
-          {/* Quick Stats Block - Matching Login page visual language */}
-          <div className="mt-12 md:mt-16 flex gap-8 md:gap-16 border-t border-white/10 pt-8 md:pt-10">
+          {/* Stats Section */}
+          <div className="mt-16 pt-8 border-t border-neutral-300 grid grid-cols-3 gap-8">
             <div>
-              <p className="text-2xl md:text-3xl font-bold text-white mb-1 tracking-tight">10+</p>
-              <p className="text-[11px] text-gray-400 font-medium">Item tersedia</p>
+              <p className="text-3xl font-bold text-neutral-900 mb-2">500+</p>
+              <p className="text-sm text-neutral-600">Premium Items</p>
             </div>
             <div>
-              <p className="text-2xl md:text-3xl font-bold text-white mb-1 tracking-tight">100+</p>
-              <p className="text-[11px] text-gray-400 font-medium">Pendaki terbantu</p>
+              <p className="text-3xl font-bold text-neutral-900 mb-2">2K+</p>
+              <p className="text-sm text-neutral-600">Happy Hikers</p>
             </div>
             <div>
-              <p className="text-2xl md:text-3xl font-bold text-white mb-1 tracking-tight">4.8★</p>
-              <p className="text-[11px] text-gray-400 font-medium">Rating layanan</p>
+              <p className="text-3xl font-bold text-neutral-900 mb-2">4.9★</p>
+              <p className="text-sm text-neutral-600">Avg Rating</p>
             </div>
           </div>
         </div>
