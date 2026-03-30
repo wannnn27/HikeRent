@@ -1,11 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  /* Typography system */
+  :root {
+    --color-bg: #fafafa;
+    --color-surface: #ffffff;
+    --color-border: #ebebeb;
+    --color-text-primary: #1a1a1a;
+    --color-text-secondary: #666666;
+    --color-text-muted: #999999;
+    --color-accent: #5cb384;
+    --color-accent-light: #e8f5f1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-stone-50 text-stone-800;
-    font-family: 'DM Sans', sans-serif;
+    @apply bg-neutral-50 text-neutral-800;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Headings */
+  h1 {
+    @apply text-4xl font-bold text-neutral-900 tracking-tight;
+  }
+
+  h2 {
+    @apply text-3xl font-bold text-neutral-900 tracking-tight;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold text-neutral-900;
+  }
+
+  h4 {
+    @apply text-xl font-semibold text-neutral-900;
+  }
+
+  h5 {
+    @apply text-lg font-semibold text-neutral-700;
+  }
+
+  h6 {
+    @apply text-base font-semibold text-neutral-700;
+  }
+
+  p {
+    @apply text-neutral-600;
+  }
+
+  a {
+    @apply text-accent-DEFAULT hover:text-accent-dark transition-colors duration-200;
+  }
+
+  button {
+    @apply transition-all duration-200;
+  }
+
+  input,
+  textarea,
+  select {
+    @apply bg-neutral-50 border border-neutral-200 rounded-md px-3 py-2 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-accent-DEFAULT focus:border-transparent transition-all;
+  }
+
+  input:disabled,
+  textarea:disabled,
+  select:disabled {
+    @apply bg-neutral-100 cursor-not-allowed opacity-60;
   }
 }
 
+@layer components {
+  /* Button utilities */
+  .btn-primary {
+    @apply px-4 py-2.5 bg-accent-DEFAULT text-white rounded-md font-medium text-sm hover:bg-accent-dark transition-colors duration-200 shadow-sm hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2.5 bg-neutral-100 text-neutral-900 rounded-md font-medium text-sm hover:bg-neutral-200 transition-colors duration-200;
+  }
+
+  .btn-ghost {
+    @apply px-4 py-2.5 text-neutral-700 rounded-md font-medium text-sm hover:bg-neutral-100 transition-colors duration-200;
+  }
+
+  /* Card utility */
+  .card {
+    @apply bg-white rounded-lg border border-neutral-200 shadow-xs hover:shadow-md transition-all duration-200;
+  }
+
+  /* Container sections */
+  .section-container {
+    @apply container mx-auto px-4 sm:px-6 md:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  /* Text utilities */
+  .text-muted {
+    @apply text-neutral-500;
+  }
+
+  .text-secondary {
+    @apply text-neutral-600;
+  }
+
+  /* Border utilities */
+  .border-accent {
+    @apply border-accent-DEFAULT;
+  }
+
+  /* Loading animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out;
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
