@@ -1,6 +1,9 @@
 import React from "react";
+
 import { useLocation } from "react-router-dom";
+
 import footerLogo from "../../assets/Logo.png";
+
 import {
   FaFacebook,
   FaInstagram,
@@ -16,7 +19,6 @@ const BannerImg = {
   height: "100%",
   width: "100%",
 };
-
 const FooterLinks = [
   {
     title: "Home",
@@ -64,70 +66,93 @@ const contactInfo = [
 
 const Footer = () => {
   const location = useLocation();
-
-  // Tidak merender footer kecuali pada menu utama (/)
-  if (location.pathname !== "/") {
-    return null;
-  }
-
   return (
-    <div style={BannerImg} className="bg-gray-900 text-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-8">
+    <div className="bg-black border-t border-white/5 py-32">
+      <div className="container px-[clamp(24px,6vw,96px)] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-20">
           {/* Company Details */}
-          <div className="space-y-4 pl-6">
-            <h1 className="text-2xl font-bold flex items-center gap-3">
-              <img src={footerLogo} alt="HikeRent Logo" className="w-12 h-12" />
-              HikeRent
+          <div className="col-span-1 md:col-span-2 space-y-10">
+            <h1 className="text-3xl font-black flex items-center gap-4 text-white tracking-widest" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+              <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+                <img
+                  src={footerLogo}
+                  alt="HikeRent Logo"
+                  className="w-8 h-8 brightness-0"
+                />
+              </div>
+              HIKE<span className="text-primary">RENT</span>
             </h1>
-            <p className="text-gray-400 text-sm">
-              HikeRent adalah platform penyewaan perlengkapan outdoor terpercaya yang menyediakan berbagai pilihan perlengkapan berkualitas tinggi untuk mendukung semua kebutuhan petualangan Anda di alam bebas.
+            <p className="text-gray-400 leading-relaxed max-w-md text-lg font-light">
+              Partner terpercaya untuk setiap petualangan outdoor Anda.
+              Menyediakan perlengkapan premium dengan standar sterilisasi tinggi
+              untuk keamanan petualangan Anda.
             </p>
-          </div>
-
-          {/* Footer Links */}
-          <div className="grid grid-cols-1 justify-self-center text-lg font-semibold mb-4">
-            <h2 className="text-lg font-semibold mb-4">Link</h2>
-            <ul className="space-y-2">
-              {FooterLinks.map((link) => (
-                <li
-                  key={link.title}
-                  className="text-gray-400 hover:text-primary transition duration-300"
-                >
-                  <a href={link.link}>{link.title}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Social and Contact Info */}
-          <div>
-            <h2 className="text-lg font-semibold mb-4">Connect with Us</h2>
-            <div className="flex items-center gap-4 mb-6">
+            <div className="flex items-center gap-4">
               {socialLinks.map((link, index) => (
                 <a
                   href={link.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   key={index}
-                  className="text-gray-400 hover:text-primary text-2xl transition duration-300"
+                  className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary hover:text-white hover:border-primary/50 hover:bg-primary/20 transition-all duration-300"
                 >
-                  {link.icon}
+                  {link.icon || link.title}
                 </a>
               ))}
             </div>
-            <div className="space-y-4">
-              {contactInfo.map((info, index) => (
-                <div className="flex items-center gap-3 text-gray-400" key={index}>
-                  {info.icon}
-                  <p className="text-sm">{info.text}</p>
-                </div>
+          </div>
+
+          {/* Footer Links */}
+          <div className="space-y-10">
+            <h2 className="text-[10px] font-bold text-primary uppercase tracking-[0.25em]">
+              Quick Navigation
+            </h2>
+            <ul className="space-y-5">
+              {FooterLinks.map((link) => (
+                <li key={link.title}>
+                  <a
+                     href={link.link}
+                     className="text-gray-400 font-medium text-sm hover:text-primary transition-colors duration-300"
+                  >
+                    {link.title}
+                  </a>
+                </li>
               ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div className="space-y-10">
+            <h2 className="text-[10px] font-bold text-primary uppercase tracking-[0.25em]">
+              Contact Info
+            </h2>
+            <div className="space-y-8">
+               {contactInfo.map((info, index) => (
+                 <div className="flex items-start gap-4" key={index}>
+                    <div className="w-10 h-10 rounded-lg bg-white/5 text-primary flex items-center justify-center flex-shrink-0 mt-0.5 border border-white/10">
+                      {info.icon}
+                    </div>
+                    <p className="text-gray-400 font-medium leading-relaxed text-sm">
+                      {info.text}
+                    </p>
+                 </div>
+               ))}
             </div>
           </div>
         </div>
-        <div className="text-center text-gray-500 text-sm mt-12">
-          &copy; {new Date().getFullYear()} HikeRent. Semua hak dilindungi.
+
+        <div className="mt-32 pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
+           <p className="text-gray-600 text-[10px] uppercase tracking-[0.2em] font-bold">
+             &copy; {new Date().getFullYear()} HikeRent Platform. Crafted for Explorer.
+           </p>
+           <div className="flex gap-10 text-[10px] uppercase tracking-[0.2em] font-bold text-gray-600">
+             <a href="#" className="hover:text-primary transition-colors">
+               Privacy Policy
+             </a>
+             <a href="#" className="hover:text-primary transition-colors">
+               Terms of Service
+             </a>
+           </div>
         </div>
       </div>
     </div>

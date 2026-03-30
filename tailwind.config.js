@@ -3,19 +3,34 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      textColor: {
-        DEFAULT: '#1a202c', // Warna untuk mode terang
-        dark: '#f7fafc', 
-      },
       colors: {
-        lightBackground: "#f8f9fa", // Warna abu-abu muda untuk mode terang
-        lightText: "#212529", // Warna teks untuk mode terang
-        darkBackground: "#1f2937", // Warna latar belakang gelap
-        darkText: "#e5e7eb", // Warna teks untuk mode gelap
+        primary: {
+          light: "#70df92",
+          DEFAULT: "#3ecf6c", // Vibrant neon green from the Login image
+          dark: "#2ba151",
+        },
+        secondary: "#000000",
+        accent: "#3ecf6c",
+        lightBackground: "#ffffff",
+        darkBackground: "#050505",
+        textLight: "#ffffff",
+        textMuted: "#a1a1aa", // gray-400 for neutral readability on black
+        darkGray: "#121212",
+        black: "#000000",
+        white: "#ffffff",
+      },
+      fontFamily: {
+        sans: ["'Plus Jakarta Sans'", "sans-serif"],
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "1rem",
+          sm: "3rem",
+        },
       },
     },
   },
-  darkMode: "class",
   plugins: [
     require("@tailwindcss/line-clamp"),
     require("@tailwindcss/typography"),

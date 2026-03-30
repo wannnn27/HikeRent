@@ -1,12 +1,21 @@
 import React, { useState } from "react";
+
 import { Link } from "react-router-dom";
+
 import Img1 from "../../assets/alat/Tenda.png";
+
 import Img2 from "../../assets/alat/Careel.png";
+
 import Img3 from "../../assets/alat/sleeping bag.png";
+
 import Img4 from "../../assets/alat/Matras.png";
+
 import Img5 from "../../assets/alat/sepatu.png";
+
 import Img6 from "../../assets/alat/Kompor.png";
+
 import Img7 from "../../assets/alat/headlamp.png";
+
 import Img8 from "../../assets/alat/backpack.png";
 
 const initialProductsData = [
@@ -22,7 +31,7 @@ const initialProductsData = [
   {
     id: 2,
     img: Img2,
-    name: "Carrier 50L",
+    name: "Carrier 50L Premium",
     price: 45000,
     availability: true,
     category: "Tas",
@@ -31,7 +40,7 @@ const initialProductsData = [
   {
     id: 3,
     img: Img3,
-    name: "Sleeping Bag",
+    name: "Sleeping Bag Polar",
     price: 30000,
     availability: false,
     category: "Tidur",
@@ -40,7 +49,7 @@ const initialProductsData = [
   {
     id: 4,
     img: Img4,
-    name: "Matras",
+    name: "Matras Camping",
     price: 20000,
     availability: true,
     category: "Tidur",
@@ -49,7 +58,7 @@ const initialProductsData = [
   {
     id: 5,
     img: Img5,
-    name: "Sepatu",
+    name: "Sepatu Hiking Pro",
     price: 25000,
     availability: true,
     category: "Alas Kaki",
@@ -67,7 +76,7 @@ const initialProductsData = [
   {
     id: 7,
     img: Img7,
-    name: "Headlamp",
+    name: "Headlamp LED",
     price: 10000,
     availability: true,
     category: "Lampu",
@@ -84,103 +93,137 @@ const initialProductsData = [
   },
 ];
 
+const categories = [
+  "Semua Kategori",
+  "Tenda",
+  "Tas",
+  "Tidur",
+  "Alas Kaki",
+  "Dapur",
+  "Lampu",
+];
+
 const Products = () => {
-  const [products, setProducts] = useState(initialProductsData);
-  const [category, setCategory] = useState("");
+  const [activeCategory, setActiveCategory] = useState("Semua Kategori");
 
-  const handleCategoryChange = (e) => {
-    setCategory(e.target.value);
-  };
-
-  const filteredProducts = products.filter((product) =>
-    category === "" || product.category.toLowerCase() === category.toLowerCase()
+  const filteredProducts = initialProductsData.filter(
+    (product) =>
+      activeCategory === "Semua Kategori" ||
+      product.category === activeCategory,
   );
 
-  const categories = ["", "Tenda", "Tas", "Tidur", "Alas Kaki", "Dapur", "Lampu"];
-
   return (
-    <div className="mt-14 mb-12 px-6 lg:px-16">
-      {/* Header section */}
-      <div className="text-center mb-12">
-        <h1
-          className="text-4xl font-bold text-gray-800 dark:text-gray-100"
-          data-aos="fade-up"
-        >
-          Sewa Barang Petualangan
-        </h1>
-        <p
-          className="text-gray-500 dark:text-gray-300 mt-4 max-w-xl mx-auto"
-          data-aos="fade-up"
-        >
-          Pilih dari berbagai perlengkapan berkualitas untuk menunjang petualangan Anda. Temukan yang sesuai dengan kebutuhan Anda.
-        </p>
-      </div>
-
-      {/* Search dropdown */}
-      <div className="mb-6 flex items-center justify-start">
-        <select
-          value={category}
-          onChange={handleCategoryChange}
-          className="p-2 border rounded-md shadow w-1/4 max-w-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
-        >
-          {categories.map((cat, index) => (
-            <option key={index} value={cat}>
-              {cat === "" ? "Semua Kategori" : cat}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Products grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {filteredProducts.map((product) => (
-          <div
-            key={product.id}
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl"
-            data-aos="fade-up"
-            data-aos-delay={product.aosDelay}
-          >
-            {/* Product image */}
-            <div className="relative h-48 flex items-center justify-center">
-              <img
-                src={product.img}
-                alt={product.name}
-                className="max-h-40 drop-shadow-md group-hover:scale-105 transition-transform duration-300"
-              />
-              {!product.availability && (
-                <span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">
-                  Habis
-                </span>
-              )}
-            </div>
-
-            {/* Product details */}
-            <div className="p-4 text-center">
-              <h2 className="font-semibold text-lg text-gray-800 dark:text-gray-100">
-                {product.name}
-              </h2>
-              <p className="text-primary text-xl font-bold mt-2">
-                Rp{product.price}/hari
-              </p>
-              <Link
-                to={`/products/${product.id}`}
-                className="inline-block mt-4 px-4 py-2 bg-primary text-white dark:text-gray-800 dark:bg-gray-300 rounded-full shadow hover:bg-primary-dark hover:dark:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-              >
-                Detail Produk
-              </Link>
-            </div>
+    <div className="py-32 bg-white" id="products">
+      <div className="container px-[clamp(24px,6vw,96px)] mx-auto">
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+          <div data-aos="fade-right">
+            <p className="text-primary font-bold text-xs uppercase tracking-[0.25em] mb-4">
+              Our Equipment
+            </p>
+            <h2 className="text-5xl md:text-6xl font-black text-black tracking-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+              KATALOG <span style={{ color: "transparent", WebkitTextStroke: "1px rgba(62,207,108,0.6)" }}>SEWA</span> TERBAIK
+            </h2>
+            <div className="w-16 h-1 bg-primary mt-6 rounded-full"></div>
           </div>
-        ))}
-      </div>
+          <div className="flex flex-wrap gap-2" data-aos="fade-left">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-6 py-2.5 rounded-lg text-[11px] font-bold uppercase tracking-widest transition-all duration-300 ${
+                  activeCategory === cat
+                    ? "bg-black text-white shadow-[0_8px_20px_rgba(0,0,0,0.15)]"
+                    : "bg-white text-gray-500 border border-gray-200 hover:border-primary/40 hover:text-primary shadow-sm"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
 
-      {/* View All Products */}
-      <div className="text-center mt-12">
-        <Link
-          to="/all-products"
-          className="inline-block px-6 py-3 bg-primary text-white text-lg font-semibold rounded-full shadow hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-        >
-          View All Products
-        </Link>
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          {filteredProducts.map((data) => (
+            <div
+              data-aos="fade-up"
+              data-aos-delay={data.aosDelay}
+              key={data.id}
+              className="group bg-white rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_24px_48px_rgba(0,0,0,0.08)] hover:-translate-y-2 border border-gray-100 hover:border-primary/20"
+            >
+              {/* Image Container */}
+              <div className="relative h-72 overflow-hidden bg-gray-50 p-12 flex items-center justify-center">
+                <img
+                  src={data.img}
+                  alt={data.name}
+                  style={{ filter: data.availability ? "drop-shadow(0 10px 15px rgba(0,0,0,0.1))" : "grayscale(1) opacity(0.4)" }}
+                  className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute top-6 left-6 flex flex-col gap-2">
+                  <span className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-md text-[9px] font-bold text-primary uppercase tracking-widest border border-gray-200 shadow-sm">
+                    {data.category}
+                  </span>
+                  {!data.availability && (
+                    <span className="bg-red-500/90 text-white px-3 py-1 rounded-md text-[9px] font-bold uppercase tracking-widest shadow-sm">
+                      Habis
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* Content Container */}
+              <div className="p-8">
+                <h3 className="text-xl font-bold text-black group-hover:text-primary transition-colors mb-4 truncate leading-tight" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  {data.name}
+                </h3>
+                
+                <div className="flex items-center gap-1 mb-8">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <svg key={s} className="w-3 h-3 text-amber-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                  <span className="text-[10px] font-bold text-gray-400 ml-2 tracking-widest">5.0</span>
+                </div>
+
+                <div className="flex items-center justify-between pt-6 border-t border-gray-100">
+                  <div>
+                    <p className="text-[9px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-1">Harga / Hari</p>
+                    <p className="text-2xl font-black text-black tracking-tighter" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                      Rp{data.price.toLocaleString()}
+                    </p>
+                  </div>
+                  <Link
+                    to={`/products/${data.id}`}
+                    style={{ background: "#3ecf6c", color: "#111" }}
+                    className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-lg shadow-primary/20"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* View All Footer */}
+        <div className="mt-24 flex flex-col items-center">
+          <Link
+            to="/all-products"
+            className="group relative inline-flex items-center gap-4 px-12 py-5 bg-transparent border border-black/10 text-black font-bold rounded-lg overflow-hidden transition-all duration-300 hover:bg-black hover:text-white"
+          >
+            <span className="text-xs uppercase tracking-[0.2em]">Jelajahi Produk Tambahan</span>
+            <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
+          <p className="text-gray-400 text-[11px] uppercase tracking-[0.15em] mt-8 font-semibold">
+            Koleksi Lengkap Menanti Petualangan Anda.
+          </p>
+        </div>
       </div>
     </div>
   );

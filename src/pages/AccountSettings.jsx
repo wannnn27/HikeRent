@@ -5,13 +5,12 @@ const AccountSettings = () => {
   const initialData = {
     name: "Adi Arwan Syah",
     email: "adi.arwan@example.com",
-    password: "********", // Password disembunyikan secara default
+    password: "********",
     phone: "123-456-7890",
     address: "Jl. Pemuda No. 10, Yogyakarta",
-    profilePicture: "https://via.placeholder.com/150", // Placeholder foto profil
+    profilePicture: "https://via.placeholder.com/150",
   };
 
-  // Ambil data dari localStorage atau gunakan nilai default
   const [userData, setUserData] = useState(() => {
     const savedData = localStorage.getItem("userData");
     return savedData ? JSON.parse(savedData) : initialData;
@@ -20,16 +19,11 @@ const AccountSettings = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [updatedData, setUpdatedData] = useState(userData);
 
-  // Fungsi untuk menangani perubahan input
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUpdatedData({
-      ...updatedData,
-      [name]: value,
-    });
+    setUpdatedData({ ...updatedData, [name]: value });
   };
 
-  // Fungsi untuk menangani unggahan foto profil
   const handleProfilePictureChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -41,14 +35,12 @@ const AccountSettings = () => {
     }
   };
 
-  // Fungsi untuk menyimpan perubahan
   const handleSave = () => {
     setUserData(updatedData);
-    localStorage.setItem("userData", JSON.stringify(updatedData)); // Simpan ke localStorage
+    localStorage.setItem("userData", JSON.stringify(updatedData));
     setIsEditing(false);
   };
 
-  // Perbarui localStorage setiap kali userData berubah
   useEffect(() => {
     localStorage.setItem("userData", JSON.stringify(userData));
   }, [userData]);
@@ -56,11 +48,16 @@ const AccountSettings = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6 text-center">Account Settings</h1>
-      <div className="bg-gray-100 dark:bg-gray-900 p-6 rounded-lg shadow-md max-w-3xl mx-auto">
+      <div className="bg-gray-100 p-6 rounded-lg shadow-md max-w-3xl mx-auto">
         {isEditing ? (
           <div className="space-y-6">
             <div className="text-center">
-              <label htmlFor="profilePicture" className="block text-sm font-medium mb-2">Profile Picture</label>
+              <label
+                htmlFor="profilePicture"
+                className="block text-sm font-medium mb-2"
+              >
+                Profile Picture
+              </label>
               <div className="mb-4">
                 <img
                   src={updatedData.profilePicture}
@@ -83,7 +80,7 @@ const AccountSettings = () => {
                 name="name"
                 value={updatedData.name}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
               />
             </div>
             <div>
@@ -93,7 +90,7 @@ const AccountSettings = () => {
                 name="email"
                 value={updatedData.email}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
               />
             </div>
             <div>
@@ -103,7 +100,7 @@ const AccountSettings = () => {
                 name="password"
                 value={updatedData.password}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
               />
             </div>
             <div>
@@ -113,7 +110,7 @@ const AccountSettings = () => {
                 name="phone"
                 value={updatedData.phone}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
               />
             </div>
             <div>
@@ -122,7 +119,7 @@ const AccountSettings = () => {
                 name="address"
                 value={updatedData.address}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
                 rows="3"
               />
             </div>
@@ -135,7 +132,7 @@ const AccountSettings = () => {
               </button>
               <button
                 onClick={() => setIsEditing(false)}
-                className="py-2 px-6 rounded-md border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-800"
+                className="py-2 px-6 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-200"
               >
                 Cancel
               </button>
@@ -152,23 +149,23 @@ const AccountSettings = () => {
             </div>
             <div>
               <span className="block text-sm font-medium">Name</span>
-              <p className="text-gray-700 dark:text-white">{userData.name}</p>
+              <p className="text-gray-700">{userData.name}</p>
             </div>
             <div>
               <span className="block text-sm font-medium">Email</span>
-              <p className="text-gray-700 dark:text-white">{userData.email}</p>
+              <p className="text-gray-700">{userData.email}</p>
             </div>
             <div>
               <span className="block text-sm font-medium">Password</span>
-              <p className="text-gray-700 dark:text-white">{userData.password}</p>
+              <p className="text-gray-700">{userData.password}</p>
             </div>
             <div>
               <span className="block text-sm font-medium">Phone</span>
-              <p className="text-gray-700 dark:text-white">{userData.phone}</p>
+              <p className="text-gray-700">{userData.phone}</p>
             </div>
             <div>
               <span className="block text-sm font-medium">Address</span>
-              <p className="text-gray-700 dark:text-white">{userData.address}</p>
+              <p className="text-gray-700">{userData.address}</p>
             </div>
             <button
               onClick={() => setIsEditing(true)}
@@ -180,10 +177,7 @@ const AccountSettings = () => {
         )}
       </div>
       <div className="text-center mt-6">
-        <Link
-          to="/"
-          className="text-blue-600 hover:underline"
-        >
+        <Link to="/home" className="text-blue-600 hover:underline">
           Back to Home
         </Link>
       </div>
