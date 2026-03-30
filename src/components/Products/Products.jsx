@@ -190,7 +190,7 @@ const Products = () => {
                 <div className="flex items-center justify-between pt-6 border-t border-gray-100">
                   <div>
                     <p className="text-[9px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-1">Harga / Hari</p>
-                    <p className="text-2xl font-black text-black tracking-tighter" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                    <p className="text-xl md:text-2xl font-black text-black tracking-tight">
                       Rp{data.price.toLocaleString()}
                     </p>
                   </div>
